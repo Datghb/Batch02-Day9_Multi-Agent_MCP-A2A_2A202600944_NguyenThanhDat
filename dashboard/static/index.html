@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multi-Agent State Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <h1>Multi-Agent State Dashboard</h1>
+          <p>Stage 4 state graph and Stage 5 service status</p>
+        </div>
+        <div class="metrics">
+          <div>
+            <span id="elapsed">0.00s</span>
+            <label>Elapsed</label>
+          </div>
+          <div>
+            <span id="service-count">0/5</span>
+            <label>Services</label>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="panel service-panel">
+          <div class="panel-head">
+            <h2>Services</h2>
+            <button id="refresh-services" class="icon-button" title="Refresh service status">Refresh</button>
+          </div>
+          <div id="services" class="service-list"></div>
+        </aside>
+
+        <section class="main-panel">
+          <div class="runbar">
+            <textarea id="question" rows="3">If a company breaks a contract, avoids taxes, and leaks customer data, what are the legal, regulatory, and privacy consequences?</textarea>
+            <div class="run-actions">
+              <button id="run-demo" class="primary">Run Demo</button>
+              <button id="run-real" class="secondary">Run Gemini</button>
+            </div>
+          </div>
+
+          <div class="graph">
+            <div class="node pending" data-node="analyze_law">
+              <strong>Analyze Law</strong>
+              <span>pending</span>
+            </div>
+            <div class="edge"></div>
+            <div class="node pending" data-node="check_routing">
+              <strong>Check Routing</strong>
+              <span>pending</span>
+            </div>
+            <div class="branch">
+              <div class="node pending" data-node="call_tax_specialist">
+                <strong>Tax Specialist</strong>
+                <span>pending</span>
+              </div>
+              <div class="node pending" data-node="call_compliance_specialist">
+                <strong>Compliance Specialist</strong>
+                <span>pending</span>
+              </div>
+              <div class="node pending" data-node="call_privacy_specialist">
+                <strong>Privacy Specialist</strong>
+                <span>pending</span>
+              </div>
+            </div>
+            <div class="node pending" data-node="aggregate">
+              <strong>Aggregate</strong>
+              <span>pending</span>
+            </div>
+          </div>
+
+          <div class="output-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>State Updates</h2>
+                <button id="clear-log" class="icon-button" title="Clear log">Clear</button>
+              </div>
+              <div id="log" class="log"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Final Answer</h2>
+              </div>
+              <article id="answer" class="answer"></article>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
