@@ -196,9 +196,13 @@ Each agent module follows the same structure:
 |---|---|---|
 | `OPENROUTER_API_KEY` | Your OpenRouter API key | (required) |
 | `OPENROUTER_MODEL` | Model identifier | `anthropic/claude-sonnet-4-5` |
+| `OPENROUTER_TEMPERATURE` | LLM temperature for more stable output | `0.3` |
+| `FAST_ROUTING` | Use keyword routing in Law Agent to reduce one LLM call | `true` |
 | `REGISTRY_URL` | Registry service URL | `http://localhost:10000` |
 
 The model is swappable to any OpenRouter-supported model (e.g., `openai/gpt-4o`, `google/gemini-2.0-flash`).
+
+`test_client.py` prints end-to-end latency after each Stage 5 request. To compare routing latency, run once with `FAST_ROUTING=false`, then set `FAST_ROUTING=true`, restart services, and run the same test again.
 
 ## Documentation Diagrams
 
